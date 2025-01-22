@@ -18,48 +18,49 @@ public class PasswordGenerator {
 
         intializeMemebers();
         length = getLength();
-        upperCase=getContainUppercase();
-        lowerCase=getContainLowercase();
-        number=getContainNumber();
-        specialChar=getContainSpecialCharacter();
-        String alphabets="abcdefghijklmnopqrstuvwxyz";
-        String numbers="0123456789";
-        String specialCharacters="!@#$%^&*()";
+        upperCase = getContainUppercase();
+        lowerCase = getContainLowercase();
+        number = getContainNumber();
+        specialChar = getContainSpecialCharacter();
+        String alphabets = "abcdefghijklmnopqrstuvwxyz";
+        String numbers = "0123456789";
+        String specialCharacters = "!@#$%^&*()";
         if(!upperCase && !lowerCase && !number && !specialChar){
             System.out.println("Please enter altease two or more conditions to proceed ! ");
             return "";
         }
-        String desiredCombination="";
+        String desiredCombination = "";
         if(upperCase){
-            desiredCombination+=alphabets.toUpperCase();
+            desiredCombination += alphabets.toUpperCase();
         }
         if(lowerCase){
-            desiredCombination+=alphabets;
+            desiredCombination += alphabets;
         }
         if(number){
-            desiredCombination+=numbers;
+            desiredCombination += numbers;
         }
         if(specialChar){
-            desiredCombination+=specialCharacters;
+            desiredCombination += specialCharacters;
         }
-        String generatedPassword="";
+        String generatedPassword = "";
         for(int i = 0 ; i < length ; i++){
-            generatedPassword+=desiredCombination.charAt(random.nextInt(desiredCombination.length()));
+            generatedPassword += desiredCombination.charAt(random.nextInt(desiredCombination.length()));
         }
-        if(generatedPassword.length()<length){
-            for(int i=generatedPassword.length() ; i<length ; i++){
-                generatedPassword+=desiredCombination.charAt(random.nextInt(desiredCombination.length()));
+        if(generatedPassword.length() < length){
+            for(int i=generatedPassword.length() ; i < length ; i++){
+                generatedPassword += desiredCombination.charAt(random.nextInt(desiredCombination.length()));
             }
         }
         return generatedPassword;
     }
     public static void intializeMemebers(){
-        scanner=new Scanner(System.in);
-        random=new Random();
-        affrimativeSet =new HashSet<String>();
-        negativeSet=new HashSet<String>();
+        scanner = new Scanner(System.in);
+        random = new Random();
+        affrimativeSet = new HashSet<String>();
+        negativeSet = new HashSet<String>();
         initializeHashset();
     }
+
     public static void initializeHashset(){
         affrimativeSet.add("True");
         affrimativeSet.add("true");
@@ -77,28 +78,28 @@ public class PasswordGenerator {
     }
     public static boolean getContainUppercase(){
         System.out.println("Do you want to contain uppercase characters ? ");
-        String response=scanner.nextLine().trim();
+        String response = scanner.nextLine().trim();
         System.out.println("Response: "+response);
         return affrimativeSet.contains(response);
     }
     public static boolean getContainLowercase(){
         System.out.println("Do you want to contain lowercase characters ? ");
-        String response=scanner.nextLine().trim();
+        String response = scanner.nextLine().trim();
         return affrimativeSet.contains(response);
     }
     public static boolean getContainNumber(){
         System.out.println("Do you want to contain numbers ? ");
-        String response=scanner.nextLine().trim();
+        String response = scanner.nextLine().trim();
         return affrimativeSet.contains(response);
     }
     public static boolean getContainSpecialCharacter(){
         System.out.println("Do you want to contain special characters ? ");
-        String response=scanner.nextLine().trim();
+        String response = scanner.nextLine().trim();
         return affrimativeSet.contains(response);
     }
     public static int getLength(){
         System.out.println("Enter the length of the password : ");
-        int recievedLength=scanner.nextInt();
+        int recievedLength = scanner.nextInt();
         scanner.nextLine();
         return recievedLength;
     }
